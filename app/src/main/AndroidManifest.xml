@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_newicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DroidCafeHWAPH">
+        <activity android:name=".activity_order"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

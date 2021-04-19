@@ -1,5 +1,6 @@
 package com.example.droidcafehwaph;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,7 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE =
+            "com.example.android.droidcafe.extra.MESSAGE";
+    private String mOrderMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //explicit intent
-                //Intent intent = new Intent(MainActivity.this, OrderActivity.class);
-                //startActivity(intent);
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, activity_order.class);
+                intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
+                startActivity(intent);
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //  .setAction("Action", null).show();
             }
         });
     }
@@ -74,27 +81,26 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showFroyoOrder(View view) {
         //llama al método displayToast, recoge el string correspondiente a la imagen seleccionada
-        displayToast(getString(R.string.froyo_order_message));
-        //mOrderMessage = getString(R.string.donut_order_message);
-        //displayToast(mOrderMessage);
+        //displayToast(getString(R.string.froyo_order_message));
+        mOrderMessage = getString(R.string.froyo_order_message);
+        displayToast(mOrderMessage);
     }
 
     /**
      * Shows a message that the donut image was clicked.
      */
     public void showDonutOrder(View view) {
-        displayToast(getString(R.string.donut_order_message));
-        //mOrderMessage = getString(R.string.donut_order_message);
-        //displayToast(mOrderMessage);
+        //displayToast(getString(R.string.donut_order_message));
+        mOrderMessage = getString(R.string.donut_order_message);
+        displayToast(mOrderMessage);
     }
     /**
      * Shows a message that the ice cream sandwich image was clicked.
      */
     public void showIceCreamOrder(View view) {
-        displayToast(getString(R.string.ice_cream_order_message));
-        //mOrderMessage = getString(R.string.donut_order_message);
-        //displayToast(mOrderMessage);
+        // displayToast(getString(R.string.ice_cream_order_message));
+        mOrderMessage = getString(R.string.ice_cream_order_message);
+        displayToast(mOrderMessage);
     }
-
 
 }
